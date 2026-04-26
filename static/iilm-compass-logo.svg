@@ -1,0 +1,48 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">IILM Compass Logo</title>
+  <desc id="desc">A refined chat-compass emblem in navy, orange, and teal for IILM Compass.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="34" y1="26" x2="184" y2="196" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#25496E"/>
+      <stop offset="1" stop-color="#11253E"/>
+    </linearGradient>
+    <linearGradient id="northGrad" x1="110" y1="76" x2="149" y2="114" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFAA5B"/>
+      <stop offset="1" stop-color="#DB6C12"/>
+    </linearGradient>
+    <linearGradient id="southGrad" x1="109" y1="103" x2="80" y2="139" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#31C9BD"/>
+      <stop offset="1" stop-color="#11A79D"/>
+    </linearGradient>
+    <filter id="shadow" x="16" y="16" width="190" height="190" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="7"/>
+      <feGaussianBlur stdDeviation="8"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.066 0 0 0 0 0.145 0 0 0 0 0.243 0 0 0 0.2 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <path d="M110 30C68.6 30 35 63.4 35 104.7C35 126.9 44.8 146.8 61.5 160.6L57.7 182.4C57 186.1 60.7 189 64.1 187.8L87.8 179.5C95 181.4 102.4 182.3 110 182.3C151.4 182.3 185 148.9 185 107.6C185 66.3 151.4 30 110 30Z" fill="url(#bgGrad)"/>
+  </g>
+
+  <circle cx="110" cy="107" r="47" fill="#F7FBFF"/>
+  <circle cx="110" cy="107" r="36" stroke="#C8D9EA" stroke-width="3" fill="none"/>
+
+  <path d="M110 73L148 107L110 117L110 73Z" fill="url(#northGrad)"/>
+  <path d="M110 141L74 107L110 97V141Z" fill="url(#southGrad)"/>
+
+  <circle cx="110" cy="107" r="9" fill="#11253E"/>
+  <circle cx="110" cy="107" r="3.5" fill="#FFFFFF"/>
+
+  <path d="M110 64V72" stroke="#9AB2CA" stroke-width="3" stroke-linecap="round"/>
+  <path d="M153 107H145" stroke="#9AB2CA" stroke-width="3" stroke-linecap="round"/>
+  <path d="M110 150V142" stroke="#9AB2CA" stroke-width="3" stroke-linecap="round"/>
+  <path d="M67 107H75" stroke="#9AB2CA" stroke-width="3" stroke-linecap="round"/>
+
+  <path d="M61 51C74 38 91 31 110 31" stroke="#EF7D22" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+</svg>
