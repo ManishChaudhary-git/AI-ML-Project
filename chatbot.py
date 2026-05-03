@@ -869,6 +869,18 @@ def predict_intent(user_input):
             "method": "rule-based-keyword",
         }
 
+    # Route CSE dean queries to the school-specific CSE faculty answer, not the general leadership list.
+    cse_dean_signals = {"dean of cse", "cse dean", "computer science dean", "school of cse dean", "who is the dean of cse", "who is dean of cse"}
+    if any(sig in cleaned for sig in cse_dean_signals):
+        return {
+            "status": "ok",
+            "message": "",
+            "tag": "faculty_cse",
+            "confidence": 1.0,
+            "similarity": 1.0,
+            "method": "rule-based-keyword",
+        }
+
     # ── Faculty routing — school-specific and general ──────────────────────
     FACULTY_SCHOOL_SIGNALS = {
         "faculty_leadership":       {"dean", "director of school", "leadership", "who leads iilm", "associate dean", "vice chancellor", "pro vice", "registrar", "chancellor", "dean list"},
@@ -1287,6 +1299,14 @@ def get_response_with_state(user_input, state=None):
     # ── Context injection: resolve vague follow-up queries using current_course ──
     cleaned_input = preprocess_text(user_input)
 
+    cse_dean_signals = {"dean of cse", "cse dean", "computer science dean", "school of cse dean", "who is the dean of cse", "who is dean of cse", "head dean of cse"}
+    if any(sig in cleaned_input for sig in cse_dean_signals):
+        return (
+            "Dr. Alok Aggarwal is the Dean of CSE at IILM Greater Noida.",
+            {"pending_followup": None, "current_tag": "faculty_cse", "current_course": None},
+            ["Who is the associate dean of CSE?", "Who is the HoD of AI/ML?", "Show CSE faculty list"]
+        )
+
     VAGUE_ELIGIBILITY = {"eligibility", "eligible", "criteria", "qualification", "qualify", "am i eligible", "what is eligibility"}
     VAGUE_FEE        = {"fee", "fees", "cost", "how much", "tuition", "what is fee", "what are fees"}
     VAGUE_ADMISSION  = {"how to apply", "apply", "admission process", "how do i apply", "steps to apply"}
@@ -1304,7 +1324,7 @@ def get_response_with_state(user_input, state=None):
     if any(p in cleaned_input for p in SCORE_PATTERNS):
         # Try to extract a percentage number
         import re as _re
-        pct_match = _re.search(r"(\d+(?:\.\d+)?)\s*%", user_input)
+        pct_match = _re.search(r"(\d+(?:\.\d+)?)\s*(?:%|percent|percentage)\b", user_input, flags=_re.IGNORECASE)
         pct = float(pct_match.group(1)) if pct_match else None
 
         course = current_course or ""
